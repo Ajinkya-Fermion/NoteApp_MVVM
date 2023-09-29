@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="noteViewModel"
+            type="com.aj.noteappajkotlinmvvm.activities.note.NoteActivityViewModel" />
+    </data>
+    <!--  ScrollView added as whole content not showable in single screen so user can scroll down  -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".activities.note.NoteActivity">
+
+    <EditText
+        android:id="@+id/edtxt_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:hint="@string/add_title_hint"
+        android:inputType="text"
+        android:text="@={noteViewModel.inputNoteTitle}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+    android:id="@+id/edtxt_noteContent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="36dp"
+    android:layout_marginEnd="20dp"
+    android:ems="10"
+    android:gravity="start|top"
+    android:hint="@string/add_notes_hint"
+    android:inputType="textMultiLine"
+    android:lines="10"
+    android:text="@={noteViewModel.inputNoteContent}"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/edtxt_title"/>
+
+<Button
+    android:id="@+id/btn_saveNote"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="36dp"
+    android:text="@string/save_btn"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/edtxt_noteContent"
+    android:onClick="@{() -> noteViewModel.validateNoteData()}" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

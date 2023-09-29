@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">NoteAppAJKotlinMVVM</string>
+    <string name="title_home">Home</string>
+    <string name="title_refer">Refer</string>
+    <string name="title_aboutus">AboutUs</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_title">Login</string>
+    <string name="enter_mobile_number_hint">Enter mobile number</string>
+    <string name="enter_password_hint">Enter password</string>
+    <string name="enter_user_name_hint">Enter user name</string>
+    <string name="enter_email_address_hint">Enter email address</string>
+    <string name="confirm_password_hint">Confirm password</string>
+    <string name="register_title">Register</string>
+    <string name="add_notes_hint">Add notes here...</string>
+    <string name="save_btn">SAVE</string>
+    <string name="add_title_hint">Add Title</string>
+    <string name="add_note_title">Add Note</string>
+    <string name="update_note_title">Update Note</string>
+    <string name="share_title">Share</string>
+    <string name="whatsapp_btn">Whatsapp</string>
+    <string name="message_btn">Message</string>
+    <string name="email_btn">Email</string>
+    <string name="logout_text">Logout</string>
+    <string name="press_back_again_exit">"Press back again to exit"</string>
+
+    <!--  Strings added while MVVM with validation  -->
+    <string name="label_email">Email</string>
+    <string name="label_password">Password</string>
+    <string name="action_login">Login</string>
+    <string name="error_format_invalid">Format is invalid</string>
+    <string name="error_too_short">Too short</string>
+
+    <!--  Strings for Login flow  -->
+    <string name="mobileNoEmpty">Mobile number cannot be empty</string>
+    <string name="mobileNo10digit">Mobile number must be 10 digit</string>
+    <string name="mobileNoInvalid">Invalid Mobile number series</string>
+    <string name="userExistEnterPwd">User Exist! Please enter password</string>
+    <string name="goToRegister">goToRegister</string>
+
+    <!--  Strings for Register flow  -->
+    <string name="nameEmpty">Name cannot be empty</string>
+    <string name="nameOnlyAlphabet">Name should contain alphabets only</string>
+    <string name="emailEmpty">Email cannot be empty</string>
+    <string name="emailInvalid">Invalid email</string>
+    <string name="pwdMismatch">Password mismatch error!</string>
+
+    <!-- Below dynamic string used in Login(pwd) & Register(pwd & confPwd) case-->
+    <string name="pwdEmpty">%1s cannot be empty</string>
+    <string name="pwd8Characters">%1s must be of 8 characters length</string>
+
+    <!--  Strings for Refer section -->
+    <string name="no_email_client_installed">There is no email client installed.</string>
+    <string name="no_sms_app_found">No Message App found</string>
+    <string name="no_whatsapp_app_found">No WhatApp App found</string>
+
+    <!--  Strings for Note(Add/Update) section  -->
+    <string name="titleCannotBeEmpty">Title cannot be empty</string>
+    <string name="noteContentCannotBeEmpty">Note Content cannot be empty</string>
+    <string name="no_notes_available">No notes available!!!</string>
+</resources>

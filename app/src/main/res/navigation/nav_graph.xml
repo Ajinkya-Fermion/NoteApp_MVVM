@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/homeFragment">
+<!--    1) "android:label=" attribute used for showing appropriate name on fragments-->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.aj.noteappajkotlinmvvm.fragments.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_noteActivity"
+            app:destination="@id/noteActivity"/>
+        <action
+            android:id="@+id/action_homeFragment_to_referFragment"
+            app:destination="@id/referFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.aj.noteappajkotlinmvvm.fragments.aboutus.AboutUsFragment"
+        android:label="@string/title_aboutus"
+        tools:layout="@layout/fragment_about_us">
+        <action
+            android:id="@+id/action_aboutUsFragment_to_referFragment"
+            app:destination="@id/referFragment" />
+        <action
+            android:id="@+id/action_aboutUsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/referFragment"
+        android:name="com.aj.noteappajkotlinmvvm.fragments.refer.ReferFragment"
+        android:label="@string/title_refer"
+        tools:layout="@layout/fragment_refer">
+        <action
+            android:id="@+id/action_referFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_referFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/noteActivity"
+        android:name="com.aj.noteappajkotlinmvvm.activities.note.NoteActivity"
+        android:label="activity_note"
+        tools:layout="@layout/activity_note">
+        <argument
+            android:name="note"
+            app:argType="com.aj.noteappajkotlinmvvm.activities.note.model.Note" />
+    </activity>
+</navigation>

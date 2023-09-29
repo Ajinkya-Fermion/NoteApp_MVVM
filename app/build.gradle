@@ -1,0 +1,109 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt' //For kotlin annotation processor library support
+//    id 'com.google.devtools.ksp' //For KSP support as replacement for Kapt.
+    id 'androidx.navigation.safeargs' //For navigation graph safeargs concept
+    id 'kotlin-parcelize' //Added for parcelable interface implementation
+}
+
+android {
+    namespace 'com.aj.noteappajkotlinmvvm'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.aj.noteappajkotlinmvvm"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        //https://medium.com/@vontonnie/create-room-schema-export-directory-7066d427eae8
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.schemaLocation"] =
+                        "$projectDir/schemas"
+            }
+        }
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        //changed from 'VERSION_1_8' to 'VERSION_17'
+        //Error in Gradle => org.gradle.api.GradleException: 'compileDebugJavaWithJavac' task (current target is 1.8) and
+        // 'kaptGenerateStubsDebugKotlin' task (current target is 17) jvm target compatibility should be
+        // set to the same Java version.
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        //changed from 1.8 to 17
+        jvmTarget = '17'
+    }
+    buildFeatures {
+        //viewBinding true //This is an subset of Data binding. Refer below link for difference
+        //https://stackoverflow.com/questions/58040778/android-difference-between-databinding-and-viewbinding
+        dataBinding true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    //1) Room DB
+    def room_version = "2.5.2"
+    implementation "androidx.room:room-runtime:$room_version"
+    // To use Kotlin annotation processing tool (kapt)
+    kapt "androidx.room:room-compiler:$room_version"
+    //https://developer.android.com/build/migrate-to-ksp (kapt to KSP migration)
+//    ksp "androidx.room:room-compiler:$room_version"
+
+    //Below library required To use Coroutine features, you must add `ktx` artifact from Room as a dependency
+    implementation "androidx.room:room-ktx:$room_version"
+
+    //2) Coroutine
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1'
+
+    //3) Navigation
+    def nav_version = "2.7.3"
+    // Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    //4) Lifecycle
+    def lifecycle_version = "2.6.1"
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    // Annotation processor
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    //5) Splashscreen implementation from Android 12 onwards
+    implementation "androidx.core:core-splashscreen:1.0.1"
+
+    //6) Datastore as replacement for Shared Preferences for Key-value pair usage.
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+    //7) Dagger 2 for dependency injection(Will be implemented in future)
+//    implementation 'com.google.dagger:dagger:2.44.2'
+//    kapt 'com.google.dagger:dagger-compiler:2.44.2'
+
+
+
+
+}
